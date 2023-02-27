@@ -1,0 +1,4 @@
+emails.db
+node_modules
+.DS_Store
+.chatgpt-log.md
