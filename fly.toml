@@ -39,3 +39,6 @@ processes = []
     interval = "15s"
     restart_limit = 0
     timeout = "2s"
+  [mounts]
+    source="db-volume"
+    destination="/data"

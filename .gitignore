@@ -1,4 +1,12 @@
 emails.db
-node_modules
-.DS_Store
 .chatgpt-log.md
+.scratchpad
+node_modules/
+*.log
+.vscode/
+.idea/
+.env
+dist/
+.DS_Store
+Thumbs.db
+data/

@@ -5,11 +5,12 @@ const sqlite3 = require('sqlite3').verbose();
 // Create a new Express application
 const app = express();
 
-// Configure Express to parse incoming JSON data
+// Configure Express to parse incoming JSON AND URL encoded data
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Create a new SQLite database connection
-const db = new sqlite3.Database('emails.db');
+const db = new sqlite3.Database('./data/emails.db');
 
 // Create a new table for storing emails if it doesn't exist
 db.run('CREATE TABLE IF NOT EXISTS emails (email TEXT)');
