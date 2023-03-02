@@ -8,8 +8,13 @@ processes = []
 [build]
   builder = "heroku/buildpacks:20"
 
+[mounts]
+    source="db_volume"
+    destination="/data"
+
 [env]
   PORT = "8080"
+  DATABASE_URL = "/data/emails.db"
 
 [experimental]
   auto_rollback = true
@@ -39,7 +44,3 @@ processes = []
     interval = "15s"
     restart_limit = 0
     timeout = "2s"
-  
-  [mounts]
-    source="db_volume"
-    destination="/data"

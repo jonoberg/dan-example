@@ -2,6 +2,9 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 
+// Config path for database
+const dbPath = process.env.DATABASE_URL || './data/emails.db';
+
 // Create a new Express application
 const app = express();
 
@@ -10,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Create a new SQLite database connection
-const db = new sqlite3.Database('./data/emails.db');
+const db = new sqlite3.Database(dbPath);
 
 // Create a new table for storing emails if it doesn't exist
 db.run('CREATE TABLE IF NOT EXISTS emails (email TEXT)');
