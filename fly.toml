@@ -14,7 +14,7 @@ processes = []
 
 [env]
   PORT = "8080"
-  DATABASE_URL = "/data/emails.db"
+  DATABASE_URL = "/data/production.sqlite"
 
 [experimental]
   auto_rollback = true
