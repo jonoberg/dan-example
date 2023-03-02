@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Submission Admin Page</title>
+</head>
+<body>
+  <h1>Email Submission Admin Page</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Email Address</th>
+      </tr>
+    </thead>
+    <tbody id="email-table-body">
+      <% for (var i = 0; i < emails.length; i++) { %>
+        <tr>
+          <td><%= emails[i].email %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

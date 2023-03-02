@@ -1,6 +1,7 @@
 // Import required modules
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
+const ejs = require('ejs');
 
 // Config path var for database
 const dbPath = process.env.DATABASE_URL || './data/emails.db';
@@ -11,6 +12,9 @@ const app = express();
 // Configure Express to parse incoming JSON AND URL encoded data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
 
 // Create a new SQLite database connection
 const db = new sqlite3.Database(dbPath);
@@ -37,6 +41,21 @@ app.post('/submit-email', (req, res) => {
     }
   });
 });
+
+// Define a route for the admin page
+app.get('/admin', (req, res) => {
+  // Query the database for the email addresses
+  db.all('SELECT email FROM emails', (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal server error');
+    } else {
+      // Render the admin.ejs template with the email addresses
+      res.render('admin', { emails: rows });
+    }
+  });
+});
+
 
 // Start the server
 const port = process.env.PORT || 3000;
