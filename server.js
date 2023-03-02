@@ -2,7 +2,7 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 
-// Config path for database
+// Config path var for database
 const dbPath = process.env.DATABASE_URL || './data/emails.db';
 
 // Create a new Express application
